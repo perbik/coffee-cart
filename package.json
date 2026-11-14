@@ -4,7 +4,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "test:e2e": "playwright test",
+    "test:e2e:headed": "playwright test --headed",
+    "test:e2e:types": "tsc --noEmit --project tsconfig.e2e.json"
   },
   "dependencies": {
     "vue": "^3.3.4",
@@ -13,6 +16,7 @@
   },
   "devDependencies": {
     "@babel/types": "^7.20.7",
+    "@playwright/test": "^1.65.1",
     "@types/node": "^18.13.0",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vue/cli-plugin-router": "^5.0.8",
