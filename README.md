@@ -28,3 +28,24 @@ https://coffee-cart.app/. This demo created with Vue 3 + Typescript + Vite.
 1. Download the project.
 2. Run `npm install`.
 3. Run `npm run dev` to start a local server.
+
+## End-to-end tests
+
+The Playwright suite uses shared fixtures and page objects for the menu, cart, and payment form.
+Each test starts at the menu with a fresh browser page. Checkout data is kept in
+`tests/data/checkout.ts`.
+
+After installing dependencies with `npm install`, install the Chromium browser:
+
+```sh
+npx playwright install chromium
+```
+
+Playwright starts the local Vite server automatically. Use these commands to run and validate the
+tests:
+
+- `npm run test:e2e` runs the full suite.
+- `npm run test:e2e:headed` runs the suite with a visible browser.
+- `npm run test:e2e:types` type-checks the test files.
+
+The tests cover promo visibility at cart counts 3, 6, and 9, verify it stays hidden between those counts, complete checkout and payment, toggle the coffee title translation, confirm the right-click add-to-cart dialog, use the hover cart preview controls, keep the cart usable beyond seven coffee varieties, display the ad banner, and report the breakable-mode console error. GitHub Actions runs the production build, test type-check, and Chromium suite on pushes and pull requests.
